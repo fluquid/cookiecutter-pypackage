@@ -1,0 +1,19 @@
+#
+# This file specifics development requirements. To update the requirements.txt
+# file run:
+#
+#    pip-compile dev-requirements.in > dev-requirements.txt
+#
+bumpversion
+wheel
+watchdog
+flake8
+tox
+coverage
+Sphinx
+{% if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
+cryptography
+PyYAML{% endif %}
+{% if cookiecutter.use_pytest == 'y' -%}
+pytest{%- endif %}
+pip-tools
