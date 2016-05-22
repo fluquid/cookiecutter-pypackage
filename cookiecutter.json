@@ -1,6 +1,6 @@
 {
-	"full_name": "Audrey Roy Greenfeld",
-	"email": "aroy@alum.mit.edu",
+	"full_name": "Rolando Espinoza",
+	"email": "rolando at rmax.io",
 	"github_username": "audreyr",
 	"project_name": "Python Boilerplate",
 	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
@@ -9,6 +9,6 @@
 	"pypi_username": "{{ cookiecutter.github_username }}",
 	"year": "{{ cookiecutter.release_date[:4] }}",
 	"version": "0.1.0",
-	"use_pytest": "n",
+	"use_pytest": "y",
 	"use_pypi_deployment_with_travis": "y"
 }
