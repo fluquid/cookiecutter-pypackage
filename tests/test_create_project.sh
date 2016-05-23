@@ -7,7 +7,7 @@ require() {
 }
 
 cleanup() {
-    rm -rf python_boilerplate
+    rm -rf python-boilerplate
 }
 trap cleanup EXIT
 
@@ -17,7 +17,7 @@ require cookiecutter
 echo "Running test script..."
 cookiecutter . --no-input
 (
-    cd ./python_boilerplate
+    cd ./python-boilerplate
     pip install -r dev-requirements.txt 
     python setup.py test
     python travis_pypi_setup.py --repo audreyr/cookiecutter-pypackage --password invalidpass
