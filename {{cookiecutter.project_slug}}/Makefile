@@ -49,7 +49,7 @@ lint:
 	flake8 {{ cookiecutter.project_package }} tests
 
 test:
-{% if cookiecutter.use_pytest == 'y' -%}
+{% if cookiecutter.use_pytest == 'y' %}
 	py.test
 {% else %}
 	python setup.py test
@@ -59,7 +59,7 @@ test-all:
 	tox
 
 coverage:
-{% if cookiecutter.use_pytest == 'y' -%}
+{% if cookiecutter.use_pytest == 'y' %}
 	coverage run --source {{ cookiecutter.project_package }} py.test
 {% else %}
 	coverage run --source {{ cookiecutter.project_package }} setup.py test
