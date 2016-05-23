@@ -1,7 +1,7 @@
 {
 	"full_name": "Rolando Espinoza",
 	"email": "rolando at rmax.io",
-	"github_username": "audreyr",
+	"github_username": "rolando",
 	"project_name": "Python Boilerplate",
 	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
 	"project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
