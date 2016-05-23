@@ -54,7 +54,7 @@ Install the new project's local development requirements into a virtualenv:
 
 .. code-block:: bash
 
-    pip install -r requirements_dev.txt
+    pip install -r dev-requirements.txt
 
 Step 5: Set Up Travis CI
 ------------------------
