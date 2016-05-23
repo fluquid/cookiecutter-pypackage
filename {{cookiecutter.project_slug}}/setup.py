@@ -31,10 +31,10 @@ setup(
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
     packages=[
-        '{{ cookiecutter.project_slug }}',
+        '{{ cookiecutter.project_package }}',
     ],
     package_dir={'{{ cookiecutter.project_slug }}':
-                 '{{ cookiecutter.project_slug }}'},
+                 '{{ cookiecutter.project_package }}'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT",

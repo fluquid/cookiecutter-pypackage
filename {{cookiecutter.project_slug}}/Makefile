@@ -46,7 +46,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 {{ cookiecutter.project_slug }} tests
+	flake8 {{ cookiecutter.project_package }} tests
 
 test:
 {% if cookiecutter.use_pytest == 'y' -%}
@@ -60,18 +60,18 @@ test-all:
 
 coverage:
 {% if cookiecutter.use_pytest == 'y' -%}
-	coverage run --source {{ cookiecutter.project_slug }} py.test
+	coverage run --source {{ cookiecutter.project_package }} py.test
 {% else %}
-	coverage run --source {{ cookiecutter.project_slug }} setup.py test
+	coverage run --source {{ cookiecutter.project_package }} setup.py test
 {% endif %}
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 docs:
-	rm -f docs/{{ cookiecutter.project_slug }}.rst
+	rm -f docs/{{ cookiecutter.project_package }}.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.project_slug }}
+	sphinx-apidoc -o docs/ {{ cookiecutter.project_package }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_{{ cookiecutter.project_slug }}
+test_{{ cookiecutter.project_package }}
 ----------------------------------
 
-Tests for `{{ cookiecutter.project_slug }}` module.
+Tests for `{{ cookiecutter.project_package }}` module.
 """
 
 {% if cookiecutter.use_pytest == 'y' -%}
@@ -14,10 +14,10 @@ import pytest
 import unittest
 {%- endif %}
 
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+from {{ cookiecutter.project_package }} import {{ cookiecutter.project_package }}
 
 {% if cookiecutter.use_pytest == 'y' -%}
-class Test{{ cookiecutter.project_slug|title }}(object):
+class Test{{ cookiecutter.project_package|title }}(object):
 
     @classmethod
     def setup_class(cls):
@@ -30,7 +30,7 @@ class Test{{ cookiecutter.project_slug|title }}(object):
     def teardown_class(cls):
         pass
 {% else %}
-class Test{{ cookiecutter.project_slug|title }}(unittest.TestCase):
+class Test{{ cookiecutter.project_package|title }}(unittest.TestCase):
 
     def setUp(self):
         pass
