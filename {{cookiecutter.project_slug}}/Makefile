@@ -20,6 +20,7 @@ help:
 	@echo "test - run tests quickly with the default Python"
 	@echo "test-all - run tests on every Python version with tox"
 	@echo "coverage - check code coverage quickly with the default Python"
+	@echo "compile-dev-reqs - compile development requirements"
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
 	@echo "release - package and upload a release"
 	@echo "dist - package"
@@ -67,6 +68,9 @@ coverage:
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
+
+compile-dev-reqs:
+	pip-compile dev-requirements.in > dev-requirements.txt
 
 docs:
 	rm -f docs/{{ cookiecutter.project_package }}.rst
