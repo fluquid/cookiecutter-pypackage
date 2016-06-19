@@ -67,7 +67,8 @@ coverage: test
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-compile-dev-reqs:
+compile-reqs:
+	pip-compile -v requirements.in -o requirements.txt
 	pip-compile -v dev-requirements.in -o dev-requirements.txt
 
 docs:
