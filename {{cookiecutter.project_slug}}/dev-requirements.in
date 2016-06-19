@@ -7,10 +7,9 @@
 # Add here project dependencies.
 
 # tests
-flake8
-coverage
 pytest
 pytest-cov
+flake8
 tox
 
 # docs
