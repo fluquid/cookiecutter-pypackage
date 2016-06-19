@@ -2,18 +2,29 @@
 # -*- coding: utf-8 -*-
 """Update encrypted deploy password in Travis config file
 """
-
-
 from __future__ import print_function
+
 import base64
 import json
 import os
-from getpass import getpass
-import yaml
+import getpass
+import sys
+
+try:
+    import yaml
+except ImportError:
+    print("Missing yaml module. Run: pip install pyyaml")
+    sys.exit(2)
+
+try:
+    import cryptography
+except ImportError:
+    print("Missing cryptography module. Run: pip install cryptography")
+    sys.exit(2)
+
 from cryptography.hazmat.primitives.serialization import load_pem_public_key
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives.asymmetric.padding import PKCS1v15
-
 
 try:
     from urllib import urlopen
@@ -105,7 +116,7 @@ def update_travis_deploy_password(encrypted_password):
 
 def main(args):
     public_key = fetch_public_key(args.repo)
-    password = args.password or getpass('PyPI password: ')
+    password = args.password or getpass.getpass('PyPI password: ')
     update_travis_deploy_password(encrypt(public_key, password.encode()))
     print("Wrote encrypted password to .travis.yml -- you're ready to deploy")
 

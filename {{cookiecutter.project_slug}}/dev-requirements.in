@@ -4,16 +4,21 @@
 #
 #    pip-compile dev-requirements.in > dev-requirements.txt
 #
-bumpversion
-wheel
-watchdog
+# Add here project dependencies.
+
+# tests
 flake8
-tox
 coverage
+pytest
+pytest-cov
+tox
+
+# docs
+watchdog
 Sphinx
-{% if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
-cryptography
-PyYAML{% endif %}
-{% if cookiecutter.use_pytest == 'y' -%}
-pytest{%- endif %}
+
+# meta
+bumpversion
+check-manifest
 pip-tools
+wheel

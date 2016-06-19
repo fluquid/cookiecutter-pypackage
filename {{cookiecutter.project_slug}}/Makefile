@@ -26,7 +26,7 @@ help:
 	@echo "dist - package"
 	@echo "install - install the package to the active Python's site-packages"
 
-clean: clean-build clean-pyc clean-test
+clean: clean-build clean-pyc clean-test clean-so
 
 clean-build:
 	rm -fr build/
@@ -46,31 +46,29 @@ clean-test:
 	rm -f .coverage
 	rm -fr htmlcov/
 
+clean-so:
+	find . -name '*.so' -exec rm -f {} +
+
 lint:
 	flake8 {{ cookiecutter.project_package }} tests
 
-test:
-{% if cookiecutter.use_pytest == 'y' %}
+build-inplace: clean
+	python setup.py build_ext --inplace
+	python setup_tests.py build_ext --inplace
+
+test: build-inplace
 	py.test
-{% else %}
-	python setup.py test
-{%- endif %}
 
 test-all:
 	tox
 
-coverage:
-{% if cookiecutter.use_pytest == 'y' %}
-	coverage run --source {{ cookiecutter.project_package }} py.test
-{% else %}
-	coverage run --source {{ cookiecutter.project_package }} setup.py test
-{% endif %}
+coverage: test
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
 compile-dev-reqs:
-	pip-compile dev-requirements.in > dev-requirements.txt
+	pip-compile -v dev-requirements.in -o dev-requirements.txt
 
 docs:
 	rm -f docs/{{ cookiecutter.project_package }}.rst
@@ -83,9 +81,7 @@ docs:
 servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
-release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel
+release: dist
 	twine upload dist/*
 
 dist: clean

@@ -39,15 +39,8 @@ twine==1.6.5
 virtualenv==15.0.1        # via tox
 watchdog==0.8.3
 wheel==0.29.0
-{% if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
-cryptography==1.3.2
-cffi==1.6.0               # via cryptography
-idna==2.1                 # via cryptography
-pyasn1==0.1.9             # via cryptography
-{%- endif %}
-{% if cookiecutter.use_pytest == 'y' -%}
 pytest==2.9.1
-{%- endif %}
+pytest-cov==2.2.1
 
 # The following packages are commented out because they are
 # considered to be unsafe in a requirements file:
