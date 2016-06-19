@@ -1,11 +1,12 @@
+include MANIFEST.in
 include AUTHORS.rst
 include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include TODO.rst
 
-recursive-include tests *
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
-
+recursive-include {{cookiecutter.project_slug}} *.pyx *.px[di] *.h *.c
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+
+global-exclude __pycache__ *.pyc *.pyo *.so
