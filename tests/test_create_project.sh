@@ -18,8 +18,15 @@ echo "Running test script..."
 cookiecutter . --no-input
 (
     cd ./python-boilerplate
-    pip install -r dev-requirements.txt 
-    python setup.py test
+
+    make install-reqs
+    make test
+
+    make dist
+    pip install --force-reinstall dist/*.tar.gz
+    pip install --force-reinstall dist/*.whl
+
+    pip install cryptography pyyaml
     python travis_pypi_setup.py --repo audreyr/cookiecutter-pypackage --password invalidpass
     python -c '''import yaml
 assert "secure" in yaml.load(open(".travis.yml"))["deploy"]["password"],\
