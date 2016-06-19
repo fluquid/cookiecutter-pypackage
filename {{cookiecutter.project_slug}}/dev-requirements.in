@@ -2,10 +2,8 @@
 # This file specifics development requirements. To update the requirements.txt
 # file run:
 #
-#    pip-compile dev-requirements.in > dev-requirements.txt
+#    pip-compile dev-requirements.in -o dev-requirements.txt
 #
-# Add here project dependencies.
-
 # tests
 pytest
 pytest-cov
