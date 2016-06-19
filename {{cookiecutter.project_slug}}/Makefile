@@ -54,7 +54,6 @@ lint:
 
 build-inplace: clean
 	python setup.py build_ext --inplace
-	python setup_tests.py build_ext --inplace
 
 test: build-inplace
 	py.test
