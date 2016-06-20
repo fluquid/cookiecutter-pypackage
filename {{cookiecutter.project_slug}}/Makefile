@@ -61,7 +61,8 @@ test: build-inplace
 test-all:
 	tox
 
-coverage: test
+coverage: build-inplace
+	coverage run --source {{ cookiecutter.project_package }} -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html

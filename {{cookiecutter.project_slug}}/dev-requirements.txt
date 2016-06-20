@@ -40,7 +40,6 @@ virtualenv==15.0.1        # via tox
 watchdog==0.8.3
 wheel==0.29.0
 pytest==2.9.1
-pytest-cov==2.2.1
 
 # The following packages are commented out because they are
 # considered to be unsafe in a requirements file:

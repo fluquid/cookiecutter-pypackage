@@ -6,7 +6,7 @@
 #
 # tests
 pytest
-pytest-cov
+coverage
 flake8
 tox
 
