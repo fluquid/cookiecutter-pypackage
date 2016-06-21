@@ -80,8 +80,8 @@ test-all:
 	tox -v
 
 coverage: develop
-	coverage run --source {{ cookiecutter.project_package }} -m pytest
-	coverage report -m
+	coverage run -m pytest
+	coverage report
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
