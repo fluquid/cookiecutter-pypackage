@@ -26,6 +26,7 @@ help:
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
 	@echo "release - package and upload a release"
 	@echo "dist - package"
+	@echo "develop - install package in develop mode"
 	@echo "install - install the package to the active Python's site-packages"
 
 clean: clean-build clean-pyc clean-test clean-so
@@ -54,16 +55,16 @@ clean-so:
 lint:
 	flake8 {{ cookiecutter.project_package }} tests
 
-build-inplace: clean
-	python setup.py build_ext --inplace
+develop: clean
+	python setup.py develop -v
 
-test: build-inplace
-	py.test
+test: develop
+	py.test -v
 
 test-all:
 	tox
 
-coverage: build-inplace
+coverage: develop
 	coverage run --source {{ cookiecutter.project_package }} -m pytest
 	coverage report -m
 	coverage html
