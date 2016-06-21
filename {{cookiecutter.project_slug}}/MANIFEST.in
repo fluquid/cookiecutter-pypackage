@@ -6,7 +6,7 @@ include LICENSE
 include README.rst
 include TODO.rst
 
-recursive-include {{cookiecutter.project_slug}} *.pyx *.px[di] *.h *.c
+recursive-include src *.pyx *.px[di] *.h
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
 
 global-exclude __pycache__ *.pyc *.pyo *.so

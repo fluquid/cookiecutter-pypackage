@@ -34,7 +34,7 @@ setup(
         '{{ cookiecutter.project_package }}',
     ],
     package_dir={'{{ cookiecutter.project_slug }}':
-                 '{{ cookiecutter.project_package }}'},
+                 'src/{{ cookiecutter.project_package }}'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
