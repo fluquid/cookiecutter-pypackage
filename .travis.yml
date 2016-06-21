@@ -10,3 +10,19 @@ install:
 
 script:
   - tox -v
+
+before_cache:
+  - rm -fr $HOME/.cache/pip/log
+
+cache:
+  diretories:
+    - $HOME/.cache/pip
+
+after_failure:
+  - more .tox/log/* | cat
+  - more .tox/*/log/* | cat
+
+notifications:
+  email:
+    on_sucess: never
+    on_failure: always
