@@ -1,4 +1,8 @@
-.PHONY: clean-pyc clean-build docs clean
+.PHONY: clean-so clean-test clean-pyc clean-build docs clean
+.PHONY: check check-manifest check-setup lint
+.PHONY: test test-all coverage
+.PHONY: compile-reqs install-reqs
+.PHONY: release dist install
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
 try:
@@ -12,6 +16,9 @@ export BROWSER_PYSCRIPT
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
 help:
+	@echo "check - check setup, code style, setup, etc"
+	@echo "check-manifest - check manifest"
+	@echo "check-setup - check setup"
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-pyc - remove Python file artifacts"
@@ -28,6 +35,14 @@ help:
 	@echo "dist - package"
 	@echo "develop - install package in develop mode"
 	@echo "install - install the package to the active Python's site-packages"
+
+check: check-setup check-manifest lint
+
+check-setup:
+	python setup.py check --strict --metadata --restructuredtext
+
+check-manifest:
+	check-manifest
 
 clean: clean-build clean-pyc clean-test clean-so
 
@@ -53,7 +68,7 @@ clean-so:
 	find . -name '*.so' -exec rm -f {} +
 
 lint:
-	flake8 src/{{ cookiecutter.project_package }} tests
+	flake8 src tests
 
 develop: clean
 	python setup.py develop -v
@@ -62,7 +77,7 @@ test: develop
 	py.test -v
 
 test-all:
-	tox
+	tox -v
 
 coverage: develop
 	coverage run --source {{ cookiecutter.project_package }} -m pytest
