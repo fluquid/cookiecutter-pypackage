@@ -53,7 +53,7 @@ clean-so:
 	find . -name '*.so' -exec rm -f {} +
 
 lint:
-	flake8 {{ cookiecutter.project_package }} tests
+	flake8 src/{{ cookiecutter.project_package }} tests
 
 develop: clean
 	python setup.py develop -v
@@ -81,7 +81,7 @@ install-reqs:
 docs:
 	rm -f docs/{{ cookiecutter.project_package }}.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.project_package }}
+	sphinx-apidoc -o docs/ src/{{ cookiecutter.project_package }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
