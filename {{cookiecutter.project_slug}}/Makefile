@@ -81,6 +81,7 @@ test-all:
 
 coverage: develop
 	coverage run -m pytest
+	coverage combine
 	coverage report
 	coverage html
 	$(BROWSER) htmlcov/index.html
