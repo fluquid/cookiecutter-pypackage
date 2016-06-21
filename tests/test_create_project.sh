@@ -18,13 +18,8 @@ echo "Running test script..."
 cookiecutter . --no-input
 (
     cd ./python-boilerplate
-
     make install-reqs
     make test
-
-    make dist
-    pip install --force-reinstall dist/*.tar.gz
-    pip install --force-reinstall dist/*.whl
 
     pip install cryptography pyyaml
     python travis_pypi_setup.py --repo audreyr/cookiecutter-pypackage --password invalidpass
