@@ -42,7 +42,7 @@ check-setup:
 	python setup.py check --strict --metadata --restructuredtext
 
 check-manifest:
-	check-manifest
+	check-manifest --ignore ".*"
 
 clean: clean-build clean-pyc clean-test clean-so
 

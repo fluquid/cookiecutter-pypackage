@@ -1,13 +1,13 @@
-include MANIFEST.in
-include AUTHORS.rst
-include CONTRIBUTING.rst
-include HISTORY.rst
-include LICENSE
-include README.rst
-include TODO.rst
+include *.in
+include *.ini
+include *.rst
+include *.txt
 
-recursive-include src *.pyx *.px[di] *.h
-recursive-include tests *.pyx *.px[di] *.h
+include LICENSE
+include Makefile
+
+recursive-include src *.py *.pyx *.px[di] *.h
+recursive-include tests *.py *.pyx *.px[di] *.h
 recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
 
 global-exclude __pycache__ *.pyc *.pyo *.so
