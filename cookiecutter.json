@@ -11,5 +11,5 @@
 	"year": "{{ cookiecutter.release_date[:4] }}",
 	"version": "0.1.0",
 	"use_pytest": "y",
-	"use_pypi_deployment_with_travis": "n"
+	"use_pypi_deployment_with_travis": "y"
 }
