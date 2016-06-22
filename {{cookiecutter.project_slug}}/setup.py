@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-{%- if cookiecutter.use_cython == 'y' %}
+{% if cookiecutter.use_cython == 'y' -%}
 import glob
 import os
 
