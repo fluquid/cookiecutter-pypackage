@@ -23,12 +23,12 @@ class build_ext(_build_ext):
         _build_ext.finalize_options(self)
 
 
-def find_extensions(dir, pattern):
+def find_extensions(dir, pattern, **kwargs):
     for pkgname in find_packages(dir):
         pkgdir = os.path.join(dir, pkgname.replace('.', '/'))
         for path in glob.glob(os.path.join(pkgdir, pattern)):
             modname, _ = os.path.splitext(os.path.basename(path))
-            yield Extension('%s.%s' % (pkgname, modname), [path])
+            yield Extension('%s.%s' % (pkgname, modname), [path], **kwargs)
 {%- endif %}
 
 
