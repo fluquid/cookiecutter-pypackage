@@ -1,13 +1,42 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from setuptools import setup
+{%- if cookiecutter.use_cython == 'y' %}
+import glob
+import os
+
+{% endif -%}
 from pkgutil import walk_packages
+from setuptools import setup
+{%- if cookiecutter.use_cython == 'y' %}
+from setuptools.extension import Extension
+from setuptools.command.build_ext import build_ext as _build_ext
+
+
+class build_ext(_build_ext):
+
+    def finalize_options(self):
+        from Cython.Build import cythonize
+        self.distribution.ext_modules[:] = cythonize(
+            self.distribution.ext_modules,
+            compiler_directives={'embedsignature': True},
+        )
+        _build_ext.finalize_options(self)
+
+
+def find_extensions(dir, pattern):
+    for pkgname in find_packages(dir):
+        pkgdir = os.path.join(dir, pkgname.replace('.', '/'))
+        for path in glob.glob(os.path.join(pkgdir, pattern)):
+            modname, _ = os.path.splitext(os.path.basename(path))
+            yield Extension('%s.%s' % (pkgname, modname), [path])
+{%- endif %}
 
 
 def find_packages(path):
-    return [
-        name for _, name, is_pkg in walk_packages([path]) if is_pkg
-    ]
+    # This method returns packages and subpackages as well.
+    for _, name, is_pkg in walk_packages([path]):
+        if is_pkg:
+            yield name
 
 
 def read_file(filename):
@@ -27,7 +56,7 @@ setup(
     author="{{ cookiecutter.full_name }}",
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
-    packages=find_packages('src'),
+    packages=list(find_packages('src')),
     package_dir={'': 'src'},
     include_package_data=True,
     install_requires=requirements,
@@ -44,4 +73,9 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
     ],
+{%- if cookiecutter.use_cython == 'y' %}
+    ext_modules=list(find_extensions('src', '*.pyx')),
+    cmdclass={'build_ext': build_ext},
+    setup_requires=['cython>=0.24'],
+{%- endif %}
 )

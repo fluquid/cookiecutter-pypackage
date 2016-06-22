@@ -5,6 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
+{%- if cookiecutter.use_cython == 'y' %}
+# Cython generated C-files.
+*.c
+{%- endif %}
 
 # Distribution / packaging
 .Python
