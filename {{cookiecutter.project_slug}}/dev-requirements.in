@@ -4,6 +4,9 @@
 #
 #    pip-compile dev-requirements.in -o dev-requirements.txt
 #
+{% if cookiecutter.use_cython == 'y' -%}
+cython
+{% endif -%}
 # tests
 pytest
 coverage
