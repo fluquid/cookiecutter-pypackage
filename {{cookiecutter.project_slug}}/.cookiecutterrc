@@ -15,6 +15,6 @@
 #    cookiecutter --overwrite-if-exists --config-file=project-path/.cookiecutterrc gh:ionelmc/cookiecutter-pylibrary
 
 default_context:
-{% for key, value in cookiecutter.items()|sort %}
-    {{ "{0:26}".format(key + ":") }} {{ "{0!r}".format(value).strip("u") }}
+{%- for key, value in cookiecutter|dictsort %}
+    {{ key }}: "{{ value }}"
 {%- endfor %}
