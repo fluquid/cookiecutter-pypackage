@@ -2,7 +2,7 @@
 .PHONY: check check-manifest check-setup lint
 .PHONY: test test-all coverage
 .PHONY: compile-reqs install-reqs
-.PHONY: release dist install
+.PHONY: release dist install build-inplace
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
 try:
@@ -113,7 +113,9 @@ release: dist
 
 dist: clean
 	python setup.py sdist
+{% if cookiecutter.use_cython == 'n' -%}
 	python setup.py bdist_wheel
+{% endif -%}
 	ls -l dist
 
 install: clean

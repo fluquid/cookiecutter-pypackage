@@ -14,5 +14,5 @@ include conftest.py
 global-exclude __pycache__ *.py[cod]
 global-exclude *.so *.dylib
 {%- if cookiecutter.use_cython == 'y' %}
-global-exclude *.c
+global-exclude *.c *.cpp
 {%- endif %}

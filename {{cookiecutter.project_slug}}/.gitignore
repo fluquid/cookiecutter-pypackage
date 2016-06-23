@@ -8,6 +8,7 @@ __pycache__/
 {%- if cookiecutter.use_cython == 'y' %}
 # Cython generated C-files.
 *.c
+*.cpp
 {%- endif %}
 
 # Distribution / packaging
