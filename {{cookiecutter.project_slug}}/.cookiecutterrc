@@ -16,5 +16,5 @@
 
 default_context:
 {%- for key, value in cookiecutter|dictsort %}
-    {{ key }}: "{{ value }}"
+    {{ key }}: {{ value }}
 {%- endfor %}
