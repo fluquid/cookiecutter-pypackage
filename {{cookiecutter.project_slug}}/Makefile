@@ -15,6 +15,8 @@ endef
 export BROWSER_PYSCRIPT
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
+SPHINX_BUILD := html
+
 help:
 	@echo "check - check setup, code style, setup, etc"
 	@echo "check-manifest - check manifest"
@@ -102,8 +104,8 @@ docs:
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ src/{{ cookiecutter.project_package }}
 	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
+	$(MAKE) -C docs $(SPHINX_BUILD)
+	$(BROWSER) docs/_build/$(SPHINX_BUILD)/index.html
 
 servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
