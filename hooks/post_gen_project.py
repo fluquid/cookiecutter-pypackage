@@ -12,3 +12,5 @@ def remove_file(filepath):
 if __name__ == '__main__':
     if '{{ cookiecutter.use_pypi_deployment_with_travis }}' != 'y':
         remove_file('travis_pypi_setup.py')
+    if '{{ cookiecutter.use_pytest }}' != 'y':
+        remove_file('pytest.ini')

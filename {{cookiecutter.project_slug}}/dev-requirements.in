@@ -8,7 +8,9 @@
 cython
 {% endif -%}
 # tests
+{% if cookiecutter.use_pytest == 'y' -%}
 pytest
+{% endif -%}
 coverage
 flake8
 tox

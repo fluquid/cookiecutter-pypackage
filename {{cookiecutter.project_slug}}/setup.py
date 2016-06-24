@@ -49,6 +49,12 @@ requirements = [
     # TODO: put package requirements here
 ]
 
+requirements_setup = [
+{%- if cookiecutter.use_cython == 'y' %}
+        'cython>=0.24',
+{%- endif %}
+]
+
 setup(
     name='{{ cookiecutter.project_slug }}',
     version='{{ cookiecutter.version }}',
@@ -80,6 +86,6 @@ setup(
 {%- if cookiecutter.use_cython == 'y' %}
     ext_modules=list(find_extensions('src', '*.pyx')),
     cmdclass={'build_ext': build_ext},
-    setup_requires=['cython>=0.24'],
 {%- endif %}
+    setup_requires=requirements_setup,
 )
