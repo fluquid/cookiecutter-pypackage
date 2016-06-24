@@ -9,11 +9,15 @@ env:
   - TOXENV=py35
   - TOXENV=py34
   - TOXENV=py27
+{%- if cookiecutter.use_cython == 'n' %}
   - TOXENV=pypy
+{%- endif %}
 
+{% if cookiecutter.use_cython == 'n' -%}
 matrix:
   allow_failures:
     - env: TOXENV=pypy
+{%- endif %}
 
 before_install:
   - python --version
