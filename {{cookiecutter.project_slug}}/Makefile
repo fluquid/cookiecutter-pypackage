@@ -113,9 +113,9 @@ release: dist
 
 dist: clean
 	python setup.py sdist
-{% if cookiecutter.use_cython == 'n' -%}
+{%- if cookiecutter.use_cython == 'n' %}
 	python setup.py bdist_wheel
-{% endif -%}
+{%- endif %}
 	ls -l dist
 
 install: clean
