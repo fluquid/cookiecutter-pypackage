@@ -68,7 +68,7 @@ setup(
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
-{% if cookiecutter.use_cython == 'y' -%}
+{%- if cookiecutter.use_cython == 'y' %}
     zip_safe=False,
 {%- endif %}
     keywords='{{ cookiecutter.project_slug }}',

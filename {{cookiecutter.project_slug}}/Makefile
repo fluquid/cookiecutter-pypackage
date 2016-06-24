@@ -83,21 +83,21 @@ develop: clean
 	python setup.py develop -v
 
 test: develop
-{% if cookiecutter.use_pytest == 'y' -%}
+{%- if cookiecutter.use_pytest == 'y' %}
 	py.test
 {% else %}
 	python setup.py test
-{% endif -%}
+{%- endif %}
 
 test-all:
 	tox -v
 
 coverage: develop
-{% if cookiecutter.use_pytest == 'y' -%}
+{%- if cookiecutter.use_pytest == 'y' %}
 	coverage run py.test
 {% else %}
 	coverage run setup.py test
-{% endif -%}
+{%- endif %}
 	coverage combine
 	coverage report
 	coverage html
