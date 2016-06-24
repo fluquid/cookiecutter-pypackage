@@ -96,11 +96,9 @@ coverage: develop
 	$(BROWSER) htmlcov/index.html
 
 compile-reqs:
-	pip-compile -v requirements.in -o requirements.txt
 	pip-compile -v dev-requirements.in -o dev-requirements.txt
 
 install-reqs:
-	pip install -r requirements.txt
 	pip install -r dev-requirements.txt
 
 docs:
