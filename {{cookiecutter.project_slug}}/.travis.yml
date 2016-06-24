@@ -11,6 +11,10 @@ env:
   - TOXENV=py27
   - TOXENV=pypy
 
+matrix:
+  allow_failures:
+    - env: TOXENV=pypy
+
 before_install:
   - python --version
   - uname -a
