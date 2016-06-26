@@ -34,7 +34,7 @@ install:
 
 # command to run tests, e.g. python setup.py test
 script:
-  - tox -v
+  - tox
 
 after_failure:
   - more .tox/log/* | cat
