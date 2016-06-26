@@ -120,7 +120,7 @@ docs:
 servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
-release: dist
+release: check dist
 	twine upload dist/*
 
 dist: clean
