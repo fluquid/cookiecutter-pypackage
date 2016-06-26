@@ -24,3 +24,4 @@ bumpversion
 check-manifest
 pip-tools
 wheel
+twine
