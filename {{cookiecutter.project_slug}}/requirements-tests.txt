@@ -1,0 +1,7 @@
+# This packages are required to run all the tests.
+coverage
+flake8
+{% if cookiecutter.use_pytest == 'y' -%}
+pytest
+{% endif -%}
+tox

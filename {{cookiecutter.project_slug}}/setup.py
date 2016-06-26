@@ -45,15 +45,12 @@ def read_file(filename):
         return fp.read()
 
 
-requirements = [
-    # TODO: put package requirements here
-]
+def read_requirements(filename):
+    return [
+        line.strip() for line in read_file(filename).splitlines()
+        if not line.startswith('#')
+    ]
 
-requirements_setup = [
-{%- if cookiecutter.use_cython == 'y' %}
-        'cython>=0.24',
-{%- endif %}
-]
 
 setup(
     name='{{ cookiecutter.project_slug }}',
@@ -65,8 +62,9 @@ setup(
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
     packages=list(find_packages('src')),
     package_dir={'': 'src'},
+    setup_requires=read_requirements('requirements-setup.txt'),
+    install_requires=read_requirements('requirements-install.txt'),
     include_package_data=True,
-    install_requires=requirements,
     license="MIT",
 {%- if cookiecutter.use_cython == 'y' %}
     zip_safe=False,
@@ -87,5 +85,4 @@ setup(
     ext_modules=list(find_extensions('src', '*.pyx')),
     cmdclass={'build_ext': build_ext},
 {%- endif %}
-    setup_requires=requirements_setup,
 )
