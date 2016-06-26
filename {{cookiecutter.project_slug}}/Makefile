@@ -134,6 +134,10 @@ requirements%.txt: requirements%.in
 	pip-compile -v $< -o $@
 
 REQUIREMENTS_TXT := $(REQUIREMENTS_IN:.in=.txt)
+ifndef REQUIREMENTS_TXT
+REQUIREMENTS_TXT := $(wildcard requirements*.txt)
+endif
+
 compile-reqs: $(REQUIREMENTS_TXT)
 	@test -z "$$REQUIREMENTS_TXT" && echo "No 'requirements*.in' files. Nothing to do"
 
