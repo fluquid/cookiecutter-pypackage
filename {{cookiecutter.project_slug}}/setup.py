@@ -42,7 +42,7 @@ def find_packages(path):
 
 def read_file(filename):
     with open(filename) as fp:
-        return fp.read()
+        return fp.read().strip()
 
 
 def read_requirements(filename):
@@ -54,7 +54,7 @@ def read_requirements(filename):
 
 setup(
     name='{{ cookiecutter.project_slug }}',
-    version='{{ cookiecutter.version }}',
+    version=read_file('VERSION'),
     description="{{ cookiecutter.project_short_description }}",
     long_description=read_file('README.rst') + '\n\n' + read_file('HISTORY.rst'),
     author="{{ cookiecutter.full_name }}",
