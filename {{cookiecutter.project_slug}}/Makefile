@@ -103,12 +103,6 @@ coverage: develop
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-compile-reqs:
-	pip-compile -v dev-requirements.in -o dev-requirements.txt
-
-install-reqs:
-	pip install -r dev-requirements.txt
-
 docs:
 	rm -f docs/{{ cookiecutter.project_package }}.rst
 	rm -f docs/modules.rst
@@ -132,3 +126,17 @@ dist: clean
 
 install: clean
 	python setup.py install
+
+REQUIREMENTS_IN := $(wildcard requirements*.in)
+.PHONY: $(REQUIREMENTS_IN)
+
+requirements%.txt: requirements%.in
+	pip-compile -v $< -o $@
+
+REQUIREMENTS_TXT := $(REQUIREMENTS_IN:.in=.txt)
+compile-reqs: $(REQUIREMENTS_TXT)
+	@test -z "$$REQUIREMENTS_TXT" && echo "No 'requirements*.in' files. Nothing to do"
+
+install-reqs:
+	@test -z "$$REQUIREMENTS_TXT" && echo "No 'requirements*.txt' files. Nothing to do"
+	$(foreach req,$(REQUIREMENTS_TXT),pip install -r $(req);)
