@@ -85,7 +85,7 @@ develop: clean
 test: develop
 {%- if cookiecutter.use_pytest == 'y' %}
 	py.test
-{% else %}
+{%- else %}
 	python setup.py test
 {%- endif %}
 
@@ -94,8 +94,8 @@ test-all:
 
 coverage: develop
 {%- if cookiecutter.use_pytest == 'y' %}
-	coverage run py.test
-{% else %}
+	coverage run -m py.test
+{%- else %}
 	coverage run setup.py test
 {%- endif %}
 	coverage combine
