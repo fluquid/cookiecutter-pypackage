@@ -36,6 +36,11 @@ install:
 script:
   - tox
 
+after_success:
+{%- if cookiecutter.use_codecov == 'y' %}
+    - bash <(curl -s https://codecov.io/bash)
+{%- endif %}
+
 after_failure:
   - more .tox/log/* | cat
   - more .tox/*/log/* | cat
