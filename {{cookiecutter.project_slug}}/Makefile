@@ -80,7 +80,7 @@ build-inplace:
 	python setup.py build_ext --inplace
 
 develop: clean
-	python setup.py develop -v
+	pip install -e .
 
 test: develop
 {%- if cookiecutter.use_pytest == 'y' %}
@@ -125,7 +125,7 @@ dist: clean
 	ls -l dist
 
 install: clean
-	python setup.py install
+	pip install .
 
 REQUIREMENTS_IN := $(wildcard requirements*.in)
 .PHONY: $(REQUIREMENTS_IN)
