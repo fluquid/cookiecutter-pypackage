@@ -1,5 +1,5 @@
 .PHONY: clean-so clean-test clean-pyc clean-build clean-docs clean
-.PHONY: docs check check-manifest check-setup lint
+.PHONY: docs check check-manifest check-setup check-history lint
 .PHONY: test test-all coverage
 .PHONY: compile-reqs install-reqs
 .PHONY: release dist install build-inplace
@@ -21,6 +21,7 @@ help:
 	@echo "check - check setup, code style, setup, etc"
 	@echo "check-manifest - check manifest"
 	@echo "check-setup - check setup"
+	@echo "check-history - check history"
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-docs - remove docs artifacts"
@@ -39,13 +40,16 @@ help:
 	@echo "develop - install package in develop mode"
 	@echo "install - install the package to the active Python's site-packages"
 
-check: check-setup check-manifest lint
+check: check-setup check-manifest check-history lint
 
 check-setup:
 	python setup.py check --strict --metadata --restructuredtext
 
 check-manifest:
 	check-manifest --ignore ".*"
+
+check-history:
+	VERSION=`cat VERSION`; grep "^$${VERSION}\b" HISTORY.rst
 
 clean: clean-build clean-docs clean-pyc clean-test clean-so
 
