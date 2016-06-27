@@ -35,9 +35,7 @@ def find_extensions(dir, pattern, **kwargs):
 
 def find_packages(path):
     # This method returns packages and subpackages as well.
-    for _, name, is_pkg in walk_packages([path]):
-        if is_pkg:
-            yield name
+    return [name for _, name, is_pkg in walk_packages([path]) if is_pkg]
 
 
 def read_file(filename):
@@ -45,18 +43,22 @@ def read_file(filename):
         return fp.read().strip()
 
 
+def read_rst(filename):
+    # Ignore unsupported directives by pypi.
+    return ''.join(line for line in read_file(filename).splitlines()
+                   if not line.startswith('.. comment::'))
+
+
 def read_requirements(filename):
-    return [
-        line.strip() for line in read_file(filename).splitlines()
-        if not line.startswith('#')
-    ]
+    return [line.strip() for line in read_file(filename).splitlines()
+            if not line.startswith('#')]
 
 
 setup(
     name='{{ cookiecutter.project_slug }}',
     version=read_file('VERSION'),
     description="{{ cookiecutter.project_short_description }}",
-    long_description=read_file('README.rst') + '\n\n' + read_file('HISTORY.rst'),
+    long_description=read_rst('README.rst') + '\n\n' + read_rst('HISTORY.rst'),
     author="{{ cookiecutter.full_name }}",
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
