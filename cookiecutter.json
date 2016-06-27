@@ -9,7 +9,7 @@
 	"release_date": "{% now 'local' %}",
 	"pypi_username": "{{ cookiecutter.github_username }}",
 	"year": "{{ cookiecutter.release_date[:4] }}",
-	"version": "0.1.0dev",
+	"version": "0.1.0-dev",
 	"use_cython": ["n", "y"],
 	"use_pytest": ["y", "n"],
 	"use_codecov": ["y", "n"],
