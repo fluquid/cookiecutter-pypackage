@@ -121,8 +121,11 @@ docs: develop
 servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
-release: check dist
+release: clean check dist
+	# Tagging release.
+	VERSION=`cat VERSION`; git tag -a v$$VERSION
 	twine upload dist/*
+	git push --follow-tags
 
 dist: clean
 	python setup.py sdist
