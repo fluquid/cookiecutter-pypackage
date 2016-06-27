@@ -110,7 +110,7 @@ coverage: develop
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs:
+docs: develop
 	rm -f docs/{{ cookiecutter.project_package }}.rst
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ src/{{ cookiecutter.project_package }}
