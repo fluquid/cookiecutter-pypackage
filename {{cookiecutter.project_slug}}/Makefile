@@ -43,12 +43,15 @@ help:
 check: check-setup check-manifest check-history lint
 
 check-setup:
+	@echo "Checking package metadata (name, description, etc)"
 	python setup.py check --strict --metadata --restructuredtext
 
 check-manifest:
+	@echo "Checking MANIFEST.in"
 	check-manifest --ignore ".*"
 
 check-history:
+	@echo "Checking latest version in HISTORY"
 	VERSION=`cat VERSION`; grep "^$${VERSION}\b" HISTORY.rst
 
 clean: clean-build clean-docs clean-pyc clean-test clean-so
