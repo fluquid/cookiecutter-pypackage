@@ -124,8 +124,8 @@ servedocs: docs
 release: clean check dist
 	# Tagging release.
 	VERSION=`cat VERSION`; git tag -a v$$VERSION
-	twine upload dist/*
 	git push --follow-tags
+	twine upload dist/*
 
 dist: clean
 	python setup.py sdist
