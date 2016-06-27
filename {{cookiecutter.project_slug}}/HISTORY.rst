@@ -2,8 +2,10 @@
 History
 =======
 
+.. comment:: bumpversion marker
+
 {% set title -%}
-{{ cookiecutter.version }} ({{ cookiecutter.release_date }})
+{{ cookiecutter.version }} (unreleased)
 {%- endset -%}
 
 {{ title }}
