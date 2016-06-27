@@ -1,6 +1,7 @@
-===============================
+{% set title_line = "=" * cookiecutter.project_name|length -%}
+{{ title_line }}
 {{ cookiecutter.project_name }}
-===============================
+{{ title_line }}
 
 .. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug }}/badge/?version=latest
         :target: https://readthedocs.org/projects/{{ cookiecutter.project_slug }}/?badge=latest
@@ -38,12 +39,17 @@
 Features
 --------
 
-* TODO
+FIXME
+
+Usage
+-----
+
+FIXME
 
 Credits
----------
+-------
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+This package was created with Cookiecutter_ and the `rolando/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _`rolando/cookiecutter-pypackage`: https://github.com/rolando/cookiecutter-pypackage
