@@ -27,6 +27,9 @@ before_install:
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: 
   - pip install -U tox
+{%- if cookiecutter.use_codecov == 'y' %}
+  - pip install -U coverage
+{%- endif %}
 {%- if cookiecutter.use_pypi_deployment_with_travis == 'y' %}
   - pip install -U twine
 {%- endif %}
@@ -41,7 +44,11 @@ script:
 
 after_success:
 {%- if cookiecutter.use_codecov == 'y' %}
-    - bash <(curl -s https://codecov.io/bash)
+    - |
+      # Codecov requires a single .coverage and will run 'coverage xml' to
+      # generate the report.
+      coverage combine
+      bash <(curl -s https://codecov.io/bash)
 {%- endif %}
 
 after_failure:
