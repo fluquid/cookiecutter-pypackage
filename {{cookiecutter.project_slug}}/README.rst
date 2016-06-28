@@ -41,8 +41,8 @@ Features
 
 FIXME
 
-Usage
------
+Quickstart
+----------
 
 FIXME
 
