@@ -26,7 +26,10 @@ before_install:
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: 
-  - pip install -U tox twine
+  - pip install -U tox
+{%- if cookiecutter.use_pypi_deployment_with_travis == 'y' %}
+  - pip install -U twine
+{%- endif %}
   - virtualenv --version
   - easy_install --version
   - pip --version
@@ -58,11 +61,12 @@ notifications:
     on_failure: always
 
 {%- if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
-# After you create the Github repo and add it to Travis, run the
-# travis_pypi_setup.py script to finish PyPI deployment setup
+# FIXME: After you create the Github repo and add it to Travis, run the
+# travis_pypi_setup.py script to finish PyPI deployment setup. Then you can
+# remove the script travis_pypi_setup.py.
 deploy:
   provider: pypi
-  distributions: sdist bdist_wheel
+  distributions: "sdist bdist_wheel"
   user: {{ cookiecutter.pypi_username }}
   password:
     secure: PLEASE_REPLACE_ME
