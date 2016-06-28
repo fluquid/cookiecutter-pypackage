@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import io
 {% if cookiecutter.use_cython == 'y' -%}
 import glob
 import os
@@ -45,7 +46,8 @@ def read_file(filename):
 
 def read_rst(filename):
     # Ignore unsupported directives by pypi.
-    return ''.join(line for line in read_file(filename).splitlines()
+    content = read_file(filename)
+    return ''.join(line for line in io.StringIO(content)
                    if not line.startswith('.. comment::'))
 
 
