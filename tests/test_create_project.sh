@@ -19,7 +19,7 @@ cookiecutter . --no-input
 (
     cd ./python-boilerplate
     make install-reqs
-    make test
+    make check docs dist test
 
     pip install cryptography pyyaml
     python travis_pypi_setup.py --repo audreyr/cookiecutter-pypackage --password invalidpass
