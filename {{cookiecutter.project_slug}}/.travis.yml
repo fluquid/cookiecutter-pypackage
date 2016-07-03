@@ -66,8 +66,8 @@ notifications:
   email:
     on_sucess: never
     on_failure: always
+{%- if cookiecutter.use_pypi_deployment_with_travis == 'y' %}
 
-{% if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
 # FIXME: After you create the Github repo and add it to Travis, run the
 # travis_pypi_setup.py script to finish PyPI deployment setup. Then you can
 # remove the script travis_pypi_setup.py.
