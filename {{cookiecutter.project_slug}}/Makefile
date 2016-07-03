@@ -124,6 +124,7 @@ servedocs: docs
 	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: clean check dist
+	git branch | grep '* master'
 	# Tagging release.
 	VERSION=`cat VERSION`; git tag -a v$$VERSION
 	git push --follow-tags
