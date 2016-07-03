@@ -110,12 +110,14 @@ coverage: develop
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
-docs: develop
+docs-build: develop
 	rm -f docs/{{ cookiecutter.project_package }}.rst
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ src/{{ cookiecutter.project_package }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs $(SPHINX_BUILD)
+
+docs: docs-build
 	$(BROWSER) docs/_build/$(SPHINX_BUILD)/index.html
 
 servedocs: docs
