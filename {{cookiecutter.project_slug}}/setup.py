@@ -56,7 +56,7 @@ def read_requirements(filename):
             if not line.startswith('#')]
 
 
-setup(
+setup_attrs = dict(
     name='{{ cookiecutter.project_slug }}',
     version=read_file('VERSION'),
     description="{{ cookiecutter.project_short_description }}",
@@ -90,3 +90,7 @@ setup(
     cmdclass={'build_ext': build_ext},
 {%- endif %}
 )
+
+
+if __name__ == "__main__":
+    setup(setup_attrs)
