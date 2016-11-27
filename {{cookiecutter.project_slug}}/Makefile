@@ -107,6 +107,8 @@ coverage: develop
 {%- endif %}
 	coverage combine
 	coverage report
+
+coverage-html: coverage
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
