@@ -1,7 +1,6 @@
-# This packages are required to run all the tests.
+# This packages are required to run all the tests and perform checks.
 coverage
 flake8
 {% if cookiecutter.use_pytest == 'y' -%}
 pytest
 {% endif -%}
-tox
