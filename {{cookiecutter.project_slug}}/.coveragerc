@@ -6,7 +6,6 @@ source =
 branch = true
 source =
     {{ cookiecutter.project_package }}
-    tests
 parallel = true
 
 [report]

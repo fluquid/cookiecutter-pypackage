@@ -93,4 +93,4 @@ setup_attrs = dict(
 
 
 if __name__ == "__main__":
-    setup(setup_attrs)
+    setup(**setup_attrs)

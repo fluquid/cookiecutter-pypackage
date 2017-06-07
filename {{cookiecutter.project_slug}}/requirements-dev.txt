@@ -6,3 +6,8 @@ pip-tools
 twine
 watchdog
 wheel
+pyyaml
+cryptography
+docutils
+coverage
+pytest

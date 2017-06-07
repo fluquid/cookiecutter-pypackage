@@ -1,18 +1,18 @@
 {
 	"full_name": "Johannes Ahlmann",
 	"email": "johannes@fluquid.com",
-	"github_username": "codinguncut",
+	"github_username": "fluquid",
 	"project_name": "Python Boilerplate",
 	"project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
 	"project_package": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
 	"project_short_description": "Python Boilerplate Package.",
 	"pypi_username": "fluquid",
 	"year": "{% now 'local', '%Y' %}",
-	"version": "0.1.0-dev",
+	"version": "0.1.0",
 	"use_cython": ["n", "y"],
 	"use_pytest": ["y", "n"],
 	"use_codecov": ["y", "n"],
-	"use_landscape": ["y", "n"],
+	"use_landscape": ["n", "y"],
 	"use_requiresio": ["y", "n"],
 	"use_pypi_deployment_with_travis": ["y", "n"]
 }
