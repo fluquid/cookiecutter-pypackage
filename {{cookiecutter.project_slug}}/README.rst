@@ -56,7 +56,7 @@ FIXME
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `rolando/cookiecutter-pypackage`_ project template.
+This package was created with Cookiecutter_ and the `fluquid/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`rolando/cookiecutter-pypackage`: https://github.com/rolando/cookiecutter-pypackage
+.. _`fluquid/cookiecutter-pypackage`: https://github.com/fluquid/cookiecutter-pypackage
